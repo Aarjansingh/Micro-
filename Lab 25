@@ -1,0 +1,21 @@
+1.Write a program to display the string tribhuvan university without using 09h on the screen . 
+
+.model small
+.stack 64h
+.data
+str db 'TRIBHUVAN UNIVERSITY'
+.code
+main proc
+    mov ax,@data
+    mov ds,ax
+    mov cl,20
+    lea si,str
+    up: mov ah,02h
+    mov dl,[si]
+    int 21h
+    inc si
+    loop up
+    mov ax,4c00h
+    int 21h    
+    main endp
+end main
